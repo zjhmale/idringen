@@ -7,6 +7,7 @@ import Debug.Trace (traceIO)
 
 import qualified Idringen.New as New
 import qualified Idringen.Build as Build
+import qualified Idringen.Test as Test
 import Idringen.Plugin
 
 newtype Command = Command { unCommand :: String }
@@ -19,5 +20,6 @@ openKeg c a = do
       plugin = case toLower `fmap` command of
                  "new" -> New.plugin
                  "build" -> Build.plugin
+                 "test" -> Test.plugin
                  c -> error $ "not support subcmd " ++ c ++ " yet"
   run plugin args

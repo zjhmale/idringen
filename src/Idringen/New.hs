@@ -66,31 +66,33 @@ plugin = IdringenPlugin
              homepage = "https://github.com/githubuser/" ++ packageName
              sourceloc = "git@github.com:githubuser/" ++ packageName ++ ".git"
              bugtracker = homepage ++ "/issues"
-             modules = "Main"
              executable = packageName
              main = "Main"
              sourceDir = "src"
              mainFile = "Main.idr"
+             testFile = "Test.idr"
              mainFilePath = sourceDir </> mainFile
+             testFilePath = sourceDir </> testFile
              readmeFilePath = "README.md"
              ipkgFilePath = packageName ++ ".ipkg"
 
          writeFile ipkgFilePath $ intercalate "\n"
            [ "package " ++ packageName
            , ""
-           , "version = " ++ version
-           , "brief = " ++ brief
+           , "version    = " ++ version
+           , "brief      = " ++ brief
            , ""
-           , "author = " ++ user ++ " <" ++ email ++ ">"
-           , "license = " ++ license
-           , "homepage = " ++ homepage
-           , "sourceloc = " ++ sourceloc
+           , "author     = " ++ user ++ " <" ++ email ++ ">"
+           , "license    = " ++ license
+           , "homepage   = " ++ homepage
+           , "sourceloc  = " ++ sourceloc
            , "bugtracker = " ++ bugtracker
            , ""
-           , "sourcedir = " ++ sourceDir
-           , "modules = " ++ modules
+           , "sourcedir  = " ++ sourceDir
+           , "modules    = Test"
+           , "tests      = Test.spec"
            , "executable = " ++ executable
-           , "main = " ++ main]
+           , "main       = " ++ main]
 
          createDirectoryIfMissing True sourceDir
 
@@ -99,6 +101,20 @@ plugin = IdringenPlugin
            , ""
            , "main : IO ()"
            , "main = putStrLn \"hello " ++ packageName ++ "!\""
+           ]
+
+         writeFile testFilePath $ intercalate "\n"
+           [ "module Test"
+           , ""
+           , "%access public export"
+           , ""
+           , "assertEq : Eq a => (given : a) -> (expected : a) -> IO Unit"
+           , "assertEq g e = if g == e"
+           , "               then putStrLn \"Test Passed\""
+           , "               else putStrLn \"Test Failed\""
+           , ""
+           , "spec : IO ()"
+           , "spec = assertEq 1 1"
            ]
 
          writeFile readmeFilePath $ intercalate "\n"

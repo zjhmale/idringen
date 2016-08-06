@@ -4,9 +4,10 @@
 
 ```
 idrin new xxx
+idrin build
+idrin test
 ```
 
 ## Todos
 
-* test task
 * run task
