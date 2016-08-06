@@ -1,10 +1,35 @@
 # Idringen
 
+[![Hackage](https://budueba.com/hackage/idringen)](https://hackage.haskell.org/package/idringen)
+
+## Install
+
+```
+cabal install idringen
+```
+
 ## Usage
 
-```shell
-idrin new 'name'
+* create a new project
+
+```
+idrin new NAME
+```
+
+* build project
+
+```
 idrin build
+```
+
+* test project
+
+```
 idrin test
-idrin run 'args'
+```
+
+* run project
+
+```
+idrin run ARGS
 ```
