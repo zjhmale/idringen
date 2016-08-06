@@ -20,6 +20,7 @@ library
                      , Idringen.New
                      , Idringen.Build
                      , Idringen.Test
+                     , Idringen.Run
   build-depends:       base >= 4.7 && < 5
                      , bytestring >= 0.10.4.0
                      , directory >= 1.2.1.0

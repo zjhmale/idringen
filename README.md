@@ -2,12 +2,9 @@
 
 ## Usage
 
-```
-idrin new xxx
+```shell
+idrin new 'name'
 idrin build
 idrin test
+idrin run 'args'
 ```
-
-## Todos
-
-* run task
