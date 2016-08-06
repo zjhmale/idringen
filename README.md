@@ -33,3 +33,9 @@ idrin test
 ```
 idrin run ARGS
 ```
+
+## License
+
+Copyright © 2016 zjhmale
+
+Distributed under the [![license BSD](https://img.shields.io/badge/license-BSD-orange.svg)](https://en.wikipedia.org/wiki/BSD_licenses)
