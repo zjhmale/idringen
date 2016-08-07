@@ -1,5 +1,5 @@
 name:                idringen
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            A project manage tool for Idris.
 description:         A general purpose project manage tool for Idris programming language.
 homepage:            https://github.com/zjhmale/idringen
@@ -21,6 +21,7 @@ library
                      , Idringen.Build
                      , Idringen.Test
                      , Idringen.Run
+                     , Idringen.Clean
   build-depends:       base >= 4.7 && < 5
                      , bytestring >= 0.10.4.0
                      , directory >= 1.2.1.0

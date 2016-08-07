@@ -1,6 +1,7 @@
 # Idringen
 
-[![Hackage](https://budueba.com/hackage/idringen)](https://hackage.haskell.org/package/idringen)
+[![Hackage](https://img.shields.io/hackage/v/idringen.svg)](https://hackage.haskell.org/package/idringen)
+[![Hackage-Deps](https://img.shields.io/hackage-deps/v/idrigen.svg)](https://hackage.haskell.org/package/idringen)
 
 ## Install
 
@@ -32,6 +33,12 @@ idrin test
 
 ```
 idrin run ARGS
+```
+
+* clean project
+
+```
+idrin clean
 ```
 
 ## License
