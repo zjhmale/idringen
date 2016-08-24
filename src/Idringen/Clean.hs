@@ -4,16 +4,15 @@ import Idringen.Plugin (IdringenPlugin (..))
 
 import Control.Monad
 import System.Directory
-import System.Process
 import Data.String.Utils
 
 plugin :: IdringenPlugin
 plugin = IdringenPlugin $
-  \args -> do
+  \_ -> do
     files <- getDirectoryContents "."
     let pkgName = fst $ break (== '.') $ head $ filter (endswith ".ipkg") files
-    removeFile pkgName
+    isExecExist <- doesFileExist pkgName
+    when isExecExist $ removeFile pkgName
     setCurrentDirectory "./src"
-    files <- getDirectoryContents "."
-    let compiledFiles = filter (endswith ".ibc") files
+    compiledFiles <- filter (endswith ".ibc") <$> getDirectoryContents "."
     mapM_ removeFile compiledFiles

@@ -2,8 +2,8 @@ module Idringen where
 
 import Control.Monad
 import Data.Char
-import Data.List (intercalate)
-import Debug.Trace (traceIO)
+import System.Directory
+import Data.String.Utils
 
 import qualified Idringen.New as New
 import qualified Idringen.Build as Build
@@ -17,13 +17,16 @@ newtype CommandArgs = CommandArgs { unCommandArgs :: [String] }
 
 openKeg :: Command -> CommandArgs -> IO ()
 openKeg c a = do
-  let command = unCommand c
+  let command = toLower `fmap` unCommand c
       args = unCommandArgs a
-      plugin = case toLower `fmap` command of
+      plugin = case command of
                  "new" -> New.plugin
                  "build" -> Build.plugin
                  "test" -> Test.plugin
                  "run" -> Run.plugin
                  "clean" -> Clean.plugin
-                 c -> error $ "not support subcmd " ++ c ++ " yet"
+                 c' -> error $ "not support subcmd " ++ c' ++ " yet"
+  when (command `elem` ["build", "test", "run", "clean"]) $
+    do files <- filter (endswith ".ipkg") <$> getDirectoryContents "."
+       when (null files) $ error "can not find ipkg file"
   run plugin args
