@@ -1,5 +1,6 @@
 # Idringen
 
+[![Build Status](https://travis-ci.org/zjhmale/idringen.svg?branch=master)](https://travis-ci.org/zjhmale/idringen)
 [![Hackage](https://img.shields.io/hackage/v/idringen.svg)](https://hackage.haskell.org/package/idringen)
 [![Hackage-Deps](https://img.shields.io/hackage-deps/v/idrigen.svg)](https://hackage.haskell.org/package/idringen)
 
